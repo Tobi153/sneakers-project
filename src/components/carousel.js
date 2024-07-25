@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import ProductImages from "./productImages";
 import { ReactComponent as IconNext } from "../assets/images/icon-next.svg";
 import { ReactComponent as IconPrev } from "../assets/images/icon-previous.svg";
@@ -14,7 +14,7 @@ function Carousel({
   activeImage,
   setActiveImage,
 }) {
-  const images = [img1, img2, img3, img4];
+  const images = useMemo(() => [img1, img2, img3, img4], []);
 
   useEffect(() => {
     // Preload images
