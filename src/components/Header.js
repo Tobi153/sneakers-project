@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import logo from "../assets/images/logo.svg";
 import { ReactComponent as IconMenu } from "../assets/images/icon-menu.svg";
 import { ReactComponent as IconClose } from "../assets/images/icon-close.svg";
@@ -17,6 +17,7 @@ function Header({
   isSmallScreen,
 }) {
   const [isCartVisible, setIsCartVisible] = useState(false);
+  const cartRef = useRef(null);
 
   function handleVisibility() {
     setIsCartVisible((prevIsCartVisible) => !prevIsCartVisible);
@@ -25,6 +26,19 @@ function Header({
   function handleNavVisibility() {
     setIsNavVisible((prevIsNavVisible) => !prevIsNavVisible);
   }
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (cartRef.current && !cartRef.current.contains(event.target)) {
+        setIsCartVisible(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [cartRef]);
 
   return (
     <header>
@@ -75,13 +89,15 @@ function Header({
         </div>
       </nav>
       {isCartVisible && (
-        <Cart
-          product={product}
-          count={count}
-          src={ImgProd1t}
-          cart={cart}
-          setCart={setCart}
-        />
+        <div ref={cartRef}>
+          <Cart
+            product={product}
+            count={count}
+            src={ImgProd1t}
+            cart={cart}
+            setCart={setCart}
+          />
+        </div>
       )}
     </header>
   );
