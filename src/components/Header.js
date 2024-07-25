@@ -50,7 +50,7 @@ function Header({
           <IconClose className="icon-close2" onClick={handleNavVisibility} />
         )}
         <div className="logo">
-          <a href="App.js">
+          <a href="/">
             <img src={logo} alt="App logo" />
           </a>
         </div>
@@ -66,24 +66,24 @@ function Header({
             }`}
           >
             <li>
-              <a href="collections.js">Collections</a>
+              <a href="/">Collections</a>
             </li>
             <li>
-              <a href="men.js">Men</a>
+              <a href="/">Men</a>
             </li>
             <li>
-              <a href="women.js">Women</a>
+              <a href="/">Women</a>
             </li>
             <li>
-              <a href="about.js">About</a>
+              <a href="/">About</a>
             </li>
             <li>
-              <a href="contact.js">Contact</a>
+              <a href="/">Contact</a>
             </li>
           </ul>
         </>
         <div className="userProfile">
-          <IconCart className="cart" onClick={() => handleVisibility()} />
+          <IconCart className="cart" onClick={handleVisibility} />
           {count && cart ? <div className="counter">{count}</div> : ""}
 
           <img src={avatar} alt="User avatar" className="avatar" />
