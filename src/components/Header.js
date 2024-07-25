@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import logo from "../assets/images/logo.svg";
 import { ReactComponent as IconMenu } from "../assets/images/icon-menu.svg";
 import { ReactComponent as IconClose } from "../assets/images/icon-close.svg";
