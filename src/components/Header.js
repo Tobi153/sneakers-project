@@ -17,33 +17,18 @@ function Header({
   isSmallScreen,
 }) {
   const [isCartVisible, setIsCartVisible] = useState(false);
+
   function handleVisibility() {
-    setIsCartVisible((isCartVisible) => !isCartVisible);
+    setIsCartVisible((prevIsCartVisible) => !prevIsCartVisible);
   }
 
   function handleNavVisibility() {
-    setIsNavVisible(!isNavVisible);
+    setIsNavVisible((prevIsNavVisible) => !prevIsNavVisible);
   }
-  document.addEventListener("click", isCartVisible ? handleVisibility : null);
-  // let menuRef = useRef()
-  //   useEffect(() => {
-  //     let handler = (e) => {
-  //       if (e.target) {
-  //         setIsCartVisible(false);
-  //       }
-  //     };
 
-  //     document.addEventListener("mousedown", handler);
-  //   });
   return (
     <header>
       <nav className="navBar">
-        {/* {!isCartVisible && (
-          <IconMenu onClick={handleNavVisibility} className="icon-menu" />
-        )}
-        {!isNavVisible && (
-          <IconClose className="icon-close2" onClick={handleNavVisibility} />
-        )} */}
         {!isNavVisible && isSmallScreen ? (
           <IconMenu onClick={handleNavVisibility} className="icon-menu" />
         ) : (
