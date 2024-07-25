@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import ProductImages from "./productImages";
 import { ReactComponent as IconNext } from "../assets/images/icon-next.svg";
 import { ReactComponent as IconPrev } from "../assets/images/icon-previous.svg";
@@ -15,6 +16,14 @@ function Carousel({
 }) {
   const images = [img1, img2, img3, img4];
 
+  useEffect(() => {
+    // Preload images
+    images.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, [images]);
+
   const handleNextImage = () => {
     const currentIndex = images.indexOf(activeImage);
     const nextIndex =
@@ -27,18 +36,13 @@ function Carousel({
     const prevIndex = currentIndex > 0 ? currentIndex - 1 : currentIndex;
     setActiveImage(images[prevIndex]);
   };
+
   return (
     <>
       {isOverlayVisible && (
         <div className="carousel-container">
-          <IconClose
-            className="icon-close"
-            onClick={() => handleOverlayVisibility()}
-          />
-          <div
-            className="btn-arrows btn-prev"
-            onClick={() => handlePrevImage()}
-          >
+          <IconClose className="icon-close" onClick={handleOverlayVisibility} />
+          <div className="btn-arrows btn-prev" onClick={handlePrevImage}>
             <IconPrev className="icon-arrows icon-prev" />
           </div>
           <ProductImages
@@ -47,14 +51,8 @@ function Carousel({
             custom2="custom2"
             activeImage={activeImage}
           />
-          <div
-            className="btn-arrows btn-next"
-            onClick={() => handleNextImage()}
-          >
-            <IconNext
-              className="icon-arrows icon-next"
-              onClick={() => setActiveImage(activeImage)}
-            />
+          <div className="btn-arrows btn-next" onClick={handleNextImage}>
+            <IconNext className="icon-arrows icon-next" />
           </div>
         </div>
       )}
