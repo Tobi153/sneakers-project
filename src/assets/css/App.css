@@ -463,6 +463,7 @@ h2 {
 @media (max-width: 34em) {
   .container {
     width: 100%;
+    overflow-x: hidden;
   }
   header {
     width: 90%;
@@ -500,7 +501,7 @@ h2 {
   .nav-overlay {
     content: "";
     display: block;
-    width: 111%;
+    width: 120%;
     position: absolute;
     top: -4rem;
     left: -3rem;
