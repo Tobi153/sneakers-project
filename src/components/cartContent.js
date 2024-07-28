@@ -2,7 +2,10 @@ import IconDelete from "../assets/images/icon-delete.svg";
 
 export default function CartContent({ loc, name, price, c, cart, setCart }) {
   function removeCart() {
-    setCart(false);
+    const confirmed = window.confirm(
+      "Are you sure you want to delete your cart items?"
+    );
+    if (confirmed) setCart(false);
   }
   return (
     <>

@@ -23,7 +23,9 @@ function Cart({ cart, product, count, src, setCart, ref, cartRef }) {
             )}
           </div>
           {count && cart ? (
-            <BtnCart text="Checkout" customGap="customGap" />
+            <BtnCart>
+              <p className="img-text">Checkout</p>
+            </BtnCart>
           ) : null}
         </div>
       </div>

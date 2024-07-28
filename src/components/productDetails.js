@@ -1,6 +1,7 @@
 import { ReactComponent as IconMinus } from "../assets/images/icon-minus.svg";
 import { ReactComponent as IconPlus } from "../assets/images/icon-plus.svg";
 import BtnCart from "./btnCart";
+import { ReactComponent as IconCart } from "../assets/images/icon-cart.svg";
 function ProductDetails({ count, setCount, cart, setCart }) {
   const product = {
     id: 1,
@@ -57,9 +58,11 @@ function ProductDetails({ count, setCount, cart, setCart }) {
         </div>
         <BtnCart
           addToCart={() => (count ? addToCart() : null)}
-          text="Add to cart"
+          text=""
           shadow="shadow"
-        />
+        >
+          <IconCart /> Add to cart
+        </BtnCart>
       </div>
     </div>
   );
