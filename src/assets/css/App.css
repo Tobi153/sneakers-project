@@ -279,6 +279,7 @@ h2 {
   cursor: pointer;
   outline: 0;
   border: 0;
+  width: 29rem;
 }
 
 .btn-big:hover,

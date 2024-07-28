@@ -61,7 +61,10 @@ function ProductDetails({ count, setCount, cart, setCart }) {
           text=""
           shadow="shadow"
         >
-          <IconCart /> Add to cart
+          <span>
+            <IconCart />
+          </span>{" "}
+          Add to cart
         </BtnCart>
       </div>
     </div>
